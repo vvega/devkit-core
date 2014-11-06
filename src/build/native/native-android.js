@@ -32,7 +32,8 @@ exports.configure = function (api, app, config, cb) {
   config.resourcesOnly = argv["resources-only"];
 
   if (!config.isSimulated) {
-    config.outputResourcePath = path.join(config.outputPath, "assets/resources");
+    config.outputResourcePath =
+		path.join(config.outputPath, "assets", "resources.bundle");
   }
 
   // add in native-specific config keys
