@@ -24,6 +24,7 @@ var Audio = exports = Class(function () {
 		this.autoplay = false;
 		this.preload = "auto";
 		this._volume = 1;
+		this._rate = 1;
 		this.loop = false;
 		this._startTime = 0;
 		this._et = 0;
@@ -69,6 +70,14 @@ var Audio = exports = Class(function () {
 		this._volume = volume;
 		if (!this.isBackgroundMusic || this == lastbg) {
 			NATIVE.sound.setVolume(this._src, volume);
+		}
+	});
+
+	this.__defineSetter__("playbackRate", function (rate) {
+		this._rate = rate;
+		if (!this.isBackgroundMusic || this == lastbg) {
+			NATIVE.sound.setPlaybackRate(this._src, rate);
+			logger.log("PLAYBACKRATE: ", NATIVE.sound);
 		}
 	});
 
